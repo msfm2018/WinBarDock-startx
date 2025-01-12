@@ -216,5 +216,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "13.0.0"
+  win32:
+    dependency: "direct main"
+    description:
+      name: win32
+      sha256: "0eaf06e3446824099858367950a813472af675116bf63f008a4c2a75ae13e9cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.5.0"
 sdks:
   dart: ">=3.3.4 <4.0.0"
