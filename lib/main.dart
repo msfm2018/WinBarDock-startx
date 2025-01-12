@@ -45,11 +45,24 @@ class _FileListPageState extends State<FileListPage> {
 
       setState(() {
         apps = jsonList
+            .where((json) {
+              final filePath = json['path'] as String;
+              return filePath.isNotEmpty && // 确保路径非空
+                  filePath.endsWith('.exe') && // 只保留可执行文件
+                  !filePath.toLowerCase().contains('explorer.exe'); // 排除 File Explorer
+            })
             .map((json) => {
                   'name': json['name'] as String,
                   'path': json['path'] as String,
                 })
             .toList();
+
+        // apps = jsonList
+        //     .map((json) => {
+        //           'name': json['name'] as String,
+        //           'path': json['path'] as String,
+        //         })
+        //     .toList();
       });
     } catch (e) {
       print('Error fetching Start Menu Apps: $e');
@@ -237,5 +250,5 @@ Future<void> main(List<String> args) async {
     runApp(MaterialApp(
       home: FileListPage(),
     ));
-
+  }
 }
