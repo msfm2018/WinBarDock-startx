@@ -236,6 +236,12 @@ List<String> args1 = [];
 const borderColor = Color(0xFF805306);
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+// 如果参数为空，直接退出应用
+  if (args.isEmpty) {
+    exit(0); // 使用 exit(0) 退出应用
+  }
+  args1 = args; // 保存参数
   // 确保设置窗口圆角
   Future.delayed(Duration.zero, () {
     try {
@@ -245,10 +251,8 @@ Future<void> main(List<String> args) async {
       print('Error setting window corner preference: $e');
     }
   });
-  if (args.isNotEmpty) {
-    args1 = args;
-    runApp(MaterialApp(
-      home: FileListPage(),
-    ));
-  }
+
+  runApp(MaterialApp(
+    home: FileListPage(),
+  ));
 }
