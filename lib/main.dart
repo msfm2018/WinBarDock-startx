@@ -82,9 +82,10 @@ class _FileListPageState extends State<FileListPage> {
   void _handleDoubleClick(String filePath) async {
     try {
       Process process = await Process.start(filePath, []);
-      print('Program launched successfully: $filePath');
+       exit(0);
+  
     } catch (e) {
-      print('Failed to launch program: $e');
+   
     }
   }
 
